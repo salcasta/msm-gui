@@ -42,10 +42,10 @@ class MoviesController < ApplicationController
 
   def update
     #get ID out of params
-    m.id = params.fetch("the_id")
+    m_id = params.fetch("the_id")
 
     #look up the existing record
-    matching_records = Movie.where({ :id => m.id })
+    matching_records = Movie.where({ :id => m_id })
     the_movie = matching_records.at(0)
 
     #overwrite each columns with the values from the user inputs
@@ -60,6 +60,6 @@ class MoviesController < ApplicationController
     the_movie.save
 
     #redirect
-    redirect_to("/movies/#{the_movies.id}")
+    redirect_to("/movies/#{the_movie.id}")
   end
 end
